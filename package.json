@@ -1,6 +1,41 @@
 {
-  
+  "name": "electron-demo",
+  "version": "1.0.0",
+  "description": "Electron 核心功能演示项目",
+  "main": "main.js",
+  "author": "Electron Demo",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build": "electron-builder --mac",
+    "pack": "electron-builder --dir"
+  },
   "devDependencies": {
-    "electron": "^41.0.2"
+    "electron": "^41.0.2",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.electron.demo",
+    "productName": "Electron核心功能演示",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "renderer.js",
+      "styles.css"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64"]
+        }
+      ]
+    }
   }
 }

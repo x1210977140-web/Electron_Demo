@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <title>Electron 核心功能演示</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 标题区域 -->
+    <header class="header">
+      <h1>⚡ Electron 核心功能演示</h1>
+      <p class="subtitle">探索 Electron 的强大功能</p>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+      <!-- 左侧：功能演示卡片 -->
+      <div class="features-grid">
+        <!-- 卡片1: 应用信息 -->
+        <div class="card">
+          <div class="card-icon">📱</div>
+          <h3>应用信息</h3>
+          <p>查看 Electron、Chrome、Node.js 版本信息</p>
+          <button id="btn-app-info" class="btn btn-primary">获取应用信息</button>
+          <div id="app-info-display" class="info-display hidden"></div>
+        </div>
+
+        <!-- 卡片2: 系统对话框 -->
+        <div class="card">
+          <div class="card-icon">💬</div>
+          <h3>系统对话框</h3>
+          <p>调用原生系统对话框（消息框、文件选择等）</p>
+          <div class="button-group">
+            <button id="btn-message-box" class="btn btn-primary">消息框</button>
+            <button id="btn-open-file" class="btn btn-secondary">打开文件</button>
+            <button id="btn-save-file" class="btn btn-secondary">保存文件</button>
+          </div>
+        </div>
+
+        <!-- 卡片3: 窗口控制 -->
+        <div class="card">
+          <div class="card-icon">🪟</div>
+          <h3>窗口控制</h3>
+          <p>最小化、最大化、关闭窗口</p>
+          <div class="button-group">
+            <button id="btn-minimize" class="btn btn-warning">最小化</button>
+            <button id="btn-maximize" class="btn btn-success">最大化</button>
+            <button id="btn-close" class="btn btn-danger">关闭</button>
+          </div>
+        </div>
+
+        <!-- 卡片4: 文件操作 -->
+        <div class="card">
+          <div class="card-icon">📁</div>
+          <h3>文件操作</h3>
+          <p>通过 IPC 通信读写文件</p>
+          <div class="file-area">
+            <textarea id="file-content" placeholder="在此输入文件内容..."></textarea>
+            <div class="file-path-display">
+              <span>当前文件: </span>
+              <span id="current-file">未选择</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片5: 快捷键 -->
+        <div class="card">
+          <div class="card-icon">⌨️</div>
+          <h3>全局快捷键</h3>
+          <p>注册全局可用的键盘快捷键</p>
+          <div class="shortcut-info">
+            <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>
+            <span>显示/隐藏窗口</span>
+          </div>
+        </div>
+
+        <!-- 卡片6: 进程信息 -->
+        <div class="card">
+          <div class="card-icon">🔧</div>
+          <h3>进程信息</h3>
+          <p>展示当前运行环境信息</p>
+          <div id="process-info" class="info-display"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 底部状态栏 -->
+    <footer class="footer">
+      <div class="status-item">
+        <span class="status-label">运行状态:</span>
+        <span class="status-value status-online">● 在线</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">渲染进程:</span>
+        <span id="renderer-version" class="status-value">-</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">主进程:</span>
+        <span id="main-process-pid" class="status-value">-</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
